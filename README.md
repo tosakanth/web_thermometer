@@ -2,5 +2,7 @@ web_thermometer
 ===============
 
 Arduino Library 
-1. สร้าง directory ชื่อ dht11 ภายใต้ <home directory>/sketchbook/libraries
-2. download dht11.h และ dht11.cpp  นำไปวางใน  directory  ที่สร้างไว้
+<ul>
+<li> สร้าง directory ชื่อ dht11 ภายใต้ <home directory>/sketchbook/libraries</li>
+<li> download dht11.h และ dht11.cpp  นำไปวางใน  directory  ที่สร้างไว้</li>
+</ul>
