@@ -9,7 +9,7 @@ web_thermometer
 </ul>
 <img src='http://2.bp.blogspot.com/-SKcX7Au_IkA/UOExpkb4gmI/AAAAAAAAAgo/DPY7Qx431BE/s1600/IMG_2576.JPG'>
 
-<h3>สร้าวเว็บเพจ</h3>
+<h3>Client Web Page</h3>
 <ul>
 <li>ดาวน์โหลด 	jquery.flot.js,	jquery.flot.navigate.js และ 	jquery.flot.resize.js จาก http://code.google.com/p/flot/downloads/list
 </li>
