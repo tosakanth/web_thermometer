@@ -3,13 +3,13 @@
 <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1"> 
 <link rel="stylesheet" href="./css/jquery.mobile-1.2.0.min.css" />
-<script src="./js/jquery-1.8.2.min.js"></script>
-<script src="./js/jquery.mobile-1.2.0.min.js"></script>
- <script language="javascript" type="text/javascript" src="http://www.n3amedia.com/cdn/js/flot/jquery.flot.js"></script>
- <script language="javascript" type="text/javascript" src="http://www.n3amedia.com/cdn/js/flot/curvedLines.js"></script>
- <script language="javascript" type="text/javascript" src="http://www.n3amedia.com/cdn/js/flot/jquery.flot.resize.js"></script>
- <script language="javascript" type="text/javascript" src="http://www.n3amedia.com/cdn/js/flot/jquery.flot.navigate.js"></script>
-<script src='./js/socket.io.js'></script>
+<script  language="javascript" type="text/javascript" src="/js/jquery-1.8.2.min.js"></script>
+<script  language="javascript" type="text/javascript" src="/js/jquery.mobile-1.2.0.min.js"></script>
+ <script language="javascript" type="text/javascript" src="/js/flot/jquery.flot.js"></script>
+ <script language="javascript" type="text/javascript" src="/js/flot/curvedLines.js"></script>
+ <script language="javascript" type="text/javascript" src="/js/flot/jquery.flot.resize.js"></script>
+ <script language="javascript" type="text/javascript" src="/js/flot/jquery.flot.navigate.js"></script>
+ <script language="javascript" type="text/javascript"  src='/js/socket.io.js'></script>
 <style>
   table td label{
     font-size:12px;
@@ -51,6 +51,7 @@ var hdata=[[0,0]];
 
 var cplot,hplot,count=0;
 
+/*connet to websocket enable server*/
 var socket = io.connect('192.168.1.3:8090');
 
   $(document).ready(function(){     
@@ -96,7 +97,7 @@ socket.on('remote disconnected',function(data){
  function connectBoard(){
     socket.emit('connect board');
  }
-/**** Camera ****/
+
 
 </script>
 </head>
@@ -105,7 +106,7 @@ socket.on('remote disconnected',function(data){
 <div data-role="page" id="foo">
 <div data-role="header">
            <a href="index.html" data-role="button" data-inline="true">Back</a>
-  	<h1>TOSAKUN Project Demo : Temperature Report</h1>
+		<h1>TOSAKUN Project Demo : Temperature Report</h1>
 	</div><!-- /header -->
 <div data-role="content" >	
 <table align='center'>
