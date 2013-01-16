@@ -17,3 +17,4 @@ web_thermometer
 <li>ดาวน์โหลด socket.io.js จากข้างบน</li>
 <li>ศึกษาตัวอย่างจาก demo.html </li>
 </ul>
+<img src='http://1.bp.blogspot.com/-DeBwGQRZ1uo/UOEy-3aFBGI/AAAAAAAAAg4/Gp_bt0zLDws/s1600/Selection_183.png'>
