@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<link rel="stylesheet" href="./css/jquery.mobile-1.2.0.min.css" />
+<script src="./js/jquery-1.8.2.min.js"></script>
+<script src="./js/jquery.mobile-1.2.0.min.js"></script>
+ <script language="javascript" type="text/javascript" src="http://www.n3amedia.com/cdn/js/flot/jquery.flot.js"></script>
+ <script language="javascript" type="text/javascript" src="http://www.n3amedia.com/cdn/js/flot/curvedLines.js"></script>
+ <script language="javascript" type="text/javascript" src="http://www.n3amedia.com/cdn/js/flot/jquery.flot.resize.js"></script>
+ <script language="javascript" type="text/javascript" src="http://www.n3amedia.com/cdn/js/flot/jquery.flot.navigate.js"></script>
+<script src='./js/socket.io.js'></script>
+<style>
+  table td label{
+    font-size:12px;
+ }
+ .button:hover{
+    cursor:pointer;
+   
+ }
+</style>
+<script>
+var date = new Date();
+var d  = date.getDate();
+var day = (d < 10) ? '0' + d : d;
+var m = date.getMonth() + 1;
+var month = (m < 10) ? '0' + m : m;
+var yy = date.getYear();
+var year = (yy < 1000) ? yy + 1900 : yy;
+
+  var boardReady;
+var options = { 
+   
+    series: {
+       curvedLines: {
+            active: true
+       }
+   },
+   xaxis: { /*min:0, max: 100,*/ panRange: [0, 100],zoomRange: [0.1, 3]},
+   yaxis: { min:0, max: 100,position: "top" },
+   zoom: {
+            interactive: true
+    },
+    pan: {
+            interactive: true
+     }
+ };
+//var data = [[0,[0,0]]];
+var cdata=[[0,0]];
+var hdata=[[0,0]];
+
+var cplot,hplot,count=0;
+
+var socket = io.connect('192.168.1.3:8090');
+
+  $(document).ready(function(){     
+      $('#_date').text(day + "/" + month + "/" + year);  
+      cplot=$.plot($("#_temperature"), [{data: cdata, curvedLines: {show: true,  fit: true, fitPointDist: 0.000001, lineWidth: 3}},{data: cdata,  points: { show: true }}] , options);
+      hplot=$.plot($("#_humidity"), [{data: hdata, curvedLines: {show: true,  fit: true, fitPointDist: 0.000001, lineWidth: 3}},{data: hdata,  points: { show: true }}] , options);
+    
+     
+  });
+  
+
+
+  
+   
+   socket.on('connect', function (data) {
+      alert('connected');
+  });
+
+ socket.on('board ready',function(){
+    alert('Board Ready');
+ });
+ socket.on('temp-report',function(c){  
+     
+cdata.push([c.index,c.temp]);
+hdata.push([c.index,c.humid]);
+   cplot=$.plot($("#_temperature"), [{label:'temperature',data: cdata, bars: {
+        show: true,
+        barWidth: 0.5,
+        align: "center"
+      }   ,curvedLines: {show: false,  fit: false, fitPointDist: 0.01, lineWidth: 1}},{data: cdata,  points: { show: true }}] , options);
+   hplot=$.plot($("#_humidity"), [{label:'humidity',data: hdata,bars: {
+        show: true,
+        barWidth: 0.5,
+        align: "center"
+      }   ,curvedLines: {show: false,  fit: false, fitPointDist: 0.01, lineWidth: 1}},{data: hdata,  points: { show: true }}] , options);
+ 
+});
+
+socket.on('remote disconnected',function(data){
+     boardReady=0;
+    $('#_status').html('Not Ready');
+});
+ function connectBoard(){
+    socket.emit('connect board');
+ }
+/**** Camera ****/
+
+</script>
+</head>
+<body>
+
+<div data-role="page" id="foo">
+<div data-role="header">
+           <a href="index.html" data-role="button" data-inline="true">Back</a>
+  	<h1>TOSAKUN Project Demo : Temperature Report</h1>
+	</div><!-- /header -->
+<div data-role="content" >	
+<table align='center'>
+<caption>อุณหภูมิและความชื้นสัมพัทธ์ กรุงเทพ ฯ <span id='_date' /></caption>
+<tr>
+  <td>
+     <p>Temperature (C)</p>
+    <div id="_temperature" style="width:500px;height:350px"></div>
+   </td>
+<td>
+   <p>Humidity(%)</p>
+  <div id="_humidity" style="width:500px;height:350px"></div>
+ </td>
+<tr>
+</table>
+</div>
+<div data-role="footer">
+		<h4>N3A Media </h4>
+	</div><!-- /footer -->
+</div>
+</body>
+</html>
