@@ -11,7 +11,7 @@ web_thermometer
 
 <h3>Client Web Page</h3>
 <ul>
-<li>ดาวน์โหลด 	jquery.flot.js,	jquery.flot.navigate.js และ 	jquery.flot.resize.js จาก http://code.google.com/p/flot/downloads/list
+<li>ดาวน์โหลด  curvedLines.js,jquery.flot.js,	jquery.flot.navigate.js และ 	jquery.flot.resize.js จาก http://code.google.com/p/flot/downloads/list
 </li>
 <li> ดาวน์โหลดjquery รุ่นล่าสุด, jquery.mobile-1.2.0.min.css, jquery.mobile-1.2.0.min.js  จาก http://jquerymobile.com/download/ และ http://jquery.com/download/</li>
 <li>ดาวน์โหลด socket.io.js จากข้างบน</li>
