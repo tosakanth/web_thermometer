@@ -11,7 +11,13 @@ web_thermometer
 <img src='http://2.bp.blogspot.com/-SKcX7Au_IkA/UOExpkb4gmI/AAAAAAAAAgo/DPY7Qx431BE/s1600/IMG_2576.JPG'>
 
 <h3>NodeJS  Script</h3>
+ก่อนการใช้งาน ต้องมีการติดตั้ง NodeJS เสียก่อน ดูรายละเอียดที่ http://wwww.nodejs.org/
 <hr/>
+ติดตั้ง server.js บน web server เพื่อทำหน้าที่เป็น rrelay server  ส่งต่อข้อมูลไปยัง web client
+<pre>
+$> node server.js
+</pre>
+<br/>
 ติดตั้ง server-dht.js บน raspberry pi เพื่อทำหน้าที่เป็น client  sidee script
 <pre>
 $> node server-dht.js
